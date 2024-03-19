@@ -8,3 +8,96 @@
             text-align: left;
         }
     </style>
+<table dir="ltr" style="text-align: left;">
+    <tbody>
+        <tr>
+            <td scope="col"></td>
+            <td scope="col">
+                <div id="dropdown1" style="width: 100px; height:100px">
+                    <h2 style="height: 40px; text-align: left;" id="header1" dir="ltr"></h2>
+                    <ul id="list1" style="list-style: none; padding: 0;">
+                        <!-- Items will be added here -->
+                    </ul>
+                </div>
+            </td>
+            <td scope="col"></td>
+            <td scope="col">
+                <div id="dropdown2" style="width: 100px; height:100px">
+                    <h2 style="height: 40px; text-align: left;" id="header1" dir="ltr"></h2>
+                    <ul id="list2" style="list-style: none; padding: 0;">
+                        <!-- Items will be added here -->
+                    </ul>
+                </div>
+            </td>
+            <td scope="col"></td>
+            <td scope="col"></td>
+            <td scope="col"></td>
+            <td scope="col">
+                <p dir="ltr" style="text-align: left;"></p>
+            </td>
+            <td scope="col" style="direction: ltr;"></td>
+        </tr>
+
+    </tbody>
+
+</table>
+ <script>
+            // Function to add a new item
+            function addItem(elementId, formula, index) {
+                var newItem = jQuery('').addClass('formula').html('\\[' + formula + '\\]').attr('data-index', index);
+                jQuery('#' + elementId + ' ul').append(newItem);
+                jQuery(document).on('click', '#' + elementId + ' ul li', function() {
+                    jQuery('#' + elementId + ' h2').html(jQuery(this).html());
+                    //                  MathJax.typeset();
+                    jQuery("#" + elementId).accordion("option", "active", false); // This line closes the accordion
+                    // Trigger an event
+                    jQuery(document).trigger('formulaSelected', [elementId, index]);
+                });
+                //               MathJax.typeset();
+            }
+
+            // Function to create the dropdown menu
+            function createDropdownMenu(elementId, items) {
+                jQuery(function() {
+                    jQuery("#" + elementId).accordion({
+                        collapsible: true,
+                        active: false,
+                        animate: 250
+                    });
+                });
+
+                // Add items
+                items.forEach(function(item, index) {
+                    addItem(elementId, item, index);
+                });
+            }
+
+            jQuery(document).ready(function() {
+                createDropdownMenu('dropdown1', [
+                    'H_2O_{(g)}',
+                    'CO_{2(g)}',
+                    'Ca^{2+}_{(aq)}'
+                ]);
+                createDropdownMenu('dropdown2', [
+                    'H_2O_{(g)}',
+                    'CO_{2(g)}',
+                    'Ca^{2+}_{(aq)}'
+                ]);
+                // Listen for the 'formulaSelected' event
+                jQuery(document).on('formulaSelected', function(event, elementId, index) {
+                    console.log('Formula selected from ' + elementId + ': ' + index);
+                });
+            });
+
+
+
+            jQuery(document).ready(function() {
+            createDropdownMenu('dropdown1', ['H_2O_{(g)}', 'CO_{2(g)}', 'Ca^{2+}_{(aq)}']);
+             createDropdownMenu('dropdown2', ['H_2O_{(g)}', 'CO_{2(g)}', 'Ca^{2+}_{(aq)}']);
+            // Listen for the 'formulaSelected' event
+            $(document).on('formulaSelected', function(event, elementId, index) {
+                console.log('Formula selected from ' + elementId + ': ' + index);
+            });
+            // });
+            }
+        </script>
