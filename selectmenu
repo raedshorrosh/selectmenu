@@ -23,12 +23,12 @@
             jQuery('#' + elementId + ' ul').append(newItem);
             newItem.click(function () {
                 jQuery('#' + elementId + ' h2').html(jQuery(this).html());
-                MathJax.typeset();
+               MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
                 jQuery("#" + elementId).accordion("option", "active", false); // This line closes the accordion
                 // Trigger an event
                 jQuery(document).trigger('formulaSelected', [elementId, index]);
             });
-            MathJax.typeset();
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 
         }
 
