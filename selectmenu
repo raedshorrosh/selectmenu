@@ -1,6 +1,6 @@
-
 [[jsxgraph  width="800px" height="400px"]]
-   const board = JXG.JSXGraph.initBoard(divid, {
+
+const board = JXG.JSXGraph.initBoard(divid, {
             boundingbox: [-1, 8, 8, -1], axis: true
         });
 
