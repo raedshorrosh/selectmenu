@@ -50,7 +50,7 @@
       margin-left:40px; /* Add some space around the + sign */
 			margin-right:25px;
     }
-[[/style]					 
+[[/style]]					 
 
  <div class="flex-container">
     <div id="dropdown1" class="dropdown-container">
