@@ -67,43 +67,51 @@
 					 
 // Function to add a new item
 function addItem(elementId, formula, index) {
-    var newItem = jQuery('<li>').addClass('formula').html('\\[' + formula + '\\]').attr('data-index', index);
-    jQuery('#' + elementId + ' ul').append(newItem);
-    newItem.click(function() {
-        jQuery('#' + elementId + ' h2').html(jQuery(this).html());
-        MathJax.typeset();
-        jQuery("#" + elementId).accordion("option", "active", false); // This line closes the accordion
-				// Trigger an event
-        jQuery(document).trigger('formulaSelected', [elementId, index]);
-    });
-    MathJax.typeset();
-		
+  var newItem = jQuery('<li>').addClass('formula').attr('data-index', index);
+  jQuery('#' + elementId + ' ul').append(newItem);
+  newItem.click(function() {
+    jQuery('#' + elementId + ' h2').html('$$' + formula + '$$');
+    MathLive.renderMathInElement(jQuery('#' + elementId + ' h2')[0]);
+    jQuery("#" + elementId).accordion("option", "active", false); // This line closes the accordion
+    // Trigger an event
+    jQuery(document).trigger('formulaSelected', [elementId, index]);
+  });
+  newItem.html('$$' + formula + '$$');
+  MathLive.renderMathInElement(newItem[0]);
 }
 
 // Function to create the dropdown menu
 function createDropdownMenu(elementId, items) {
-    jQuery( function() {
-        jQuery( "#" + elementId ).accordion({
-            collapsible: true,
-            active: false,
-						animate: 250
-        });
+  jQuery(function() {
+    jQuery("#" + elementId).accordion({
+      collapsible: true,
+      active: false,
+      animate: 250
     });
+  });
 
-    // Add items
-    items.forEach(function(item, index) {
-        addItem(elementId, item, index);
-    });
+  // Add items
+  items.forEach(function(item, index) {
+    addItem(elementId, item, index);
+  });
 }
-const items=['H_2O_{(g)}','CO_{2(g)}','Ca^{2+}_{(aq)}'];
+
+const items = [
+  'H_2O_{(g)}',
+  'CO_{2(g)}',
+  'Ca^{2+}_{(aq)}',
+	'C_6H_{12}O_{6(s)}'
+];
+
 jQuery(document).ready(function() {
-    createDropdownMenu('dropdown1',items );
-		createDropdownMenu('dropdown2', items);
-		// Listen for the 'formulaSelected' event
-    jQuery(document).on('formulaSelected', function(event, elementId, index) {
-        console.log('Formula selected from ' + elementId + ': ' + index);
-    });
+  createDropdownMenu('dropdown1', items);
+  createDropdownMenu('dropdown2', items);
+  // Listen for the 'formulaSelected' event
+  jQuery(document).on('formulaSelected', function(event, elementId, index) {
+    console.log('Formula selected from ' + elementId + ': ' + index);
+  });
 });
-[[script]]
+
+[[/script]]
 [[/iframe]]
   
