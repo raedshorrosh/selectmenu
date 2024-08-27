@@ -104,8 +104,8 @@ const items = [
 ];
 
 jQuery(document).ready(function() {
-  createDropdownMenu('dropdown1', items);
-  createDropdownMenu('dropdown2', items);
+  createDropdownMenu('dropdown1', {#list#});
+  createDropdownMenu('dropdown2', {#list#});
   // Listen for the 'formulaSelected' event
   jQuery(document).on('formulaSelected', function(event, elementId, index) {
     console.log('Formula selected from ' + elementId + ': ' + index);
