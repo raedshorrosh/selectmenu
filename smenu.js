@@ -2,24 +2,67 @@
 [[script  src="https://code.jquery.com/jquery-1.12.4.min.js" /]]
 [[script  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"/]]
 [[style href="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css" /]]	
-[[script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" /]]
-[[style]]  .formula {text-align: left;}[[/style]
+[[script  src="https://unpkg.com/mathlive/dist/mathlive.min.js" /]]	
+ 
+[[style]]
+    .formula {
+      text-align: left;
+      padding: 5px;
+      cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .formula:hover {
+      background-color: #f0f0f0;
+    }
+    ul {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      max-height: 200px; /* Set a maximum height for the dropdown */
+      overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+    }
+    li {
+      list-style: none;
+      margin-bottom: 5px;
+      width: 100%;
+    }
+    .dropdown-container {
+      position: relative;
+      width: 120px;
+    }
+    .dropdown-header {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
 
-<div id="dropdown1" style="width: 100px; height:100px">
-    <h2 style="height: 40px;" id="header1"></h2>
-    <ul id="list1" style="list-style: none; padding: 0;">
-        <!-- Items will be added here -->
-    </ul>
-</div>
+    }
+    .flex-container {
+      display: flex;
+      align-items: bottom;
+			font-size:20px;
+			
+    }
+    .plus-sign {
+    	  position: center;
+      font-size: 2em;
+      margin-left:40px; /* Add some space around the + sign */
+			margin-right:25px;
+    }
+[[/style]					 
 
-<p style="font-size: 2em">+</p>
-<div id="dropdown2" style="width: 100px;height:100px">
-    <h2 style="height: 40px;" id="header2"></h2>
-    <ul id="list2" style="list-style: none; padding: 0;">
-        <!-- Items will be added here -->
-    </ul>
-</div>
-					   
+ <div class="flex-container">
+    <div id="dropdown1" class="dropdown-container">
+      <h2 id="header1" class="dropdown-header"></h2>
+      <ul id="list1"></ul>
+    </div>
+    <div class="plus-sign">+</div>
+    <div id="dropdown2" class="dropdown-container">
+      <h2 id="header2" class="dropdown-header"></h2>
+      <ul id="list2"></ul>
+    </div>
+  </div>				   
  [[script type="module"]]
 					 
 // Function to add a new item
