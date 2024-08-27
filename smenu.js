@@ -4,11 +4,10 @@
 <script src="path/to/your/jquery.ui.min.js"></script>
 
 [[script src="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" /]]
-[[style href="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css" /]]
 [[script src="https://polyfill.io/v3/polyfill.min.js?features=es6" /]]
-[[script  src="https://code.jquery.com/jquery-3.7.1.slim.min.js"  integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="  crossorigin="anonymous">/]]
-[[script src="https://code.jquery.com/ui/1.14.0/jquery-ui.min.js"  integrity="sha256-Fb0zP4jE3JHqu+IBB9YktLcSjI1Zc6J2b6gTjB0LpoM="   crossorigin="anonymous"/]]
-
+[[script  src="https://code.jquery.com/jquery-1.12.4.min.js" /]]
+[[script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" /]]
+[[style href="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css" /]]
   [[style]]  .formula {text-align: left;}[[/style]
 
 <div id="dropdown1" style="width: 100px; height:100px">
