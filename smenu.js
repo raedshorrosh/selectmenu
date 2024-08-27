@@ -1,14 +1,10 @@
 [[iframe]]
 
-<script src="path/to/your/jquery.min.js"></script>
-<script src="path/to/your/jquery.ui.min.js"></script>
-
 [[script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" /]]
-[[script src="https://polyfill.io/v3/polyfill.min.js?features=es6" /]]
-[[script  src="https://code.jquery.com/jquery-1.12.4.min.js" /]]
 [[script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" /]]
 [[style href="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css" /]]
-  [[style]]  .formula {text-align: left;}[[/style]
+
+[[style]]  .formula {text-align: left;}[[/style]
 
 <div id="dropdown1" style="width: 100px; height:100px">
     <h2 style="height: 40px;" id="header1"></h2>
